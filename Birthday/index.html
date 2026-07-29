@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Happy Birthday ❤️</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;500;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Cairo',sans-serif;
+}
+
+body{
+
+background:linear-gradient(135deg,#ff9ec4,#ffd6ea,#ffeef6);
+overflow-x:hidden;
+color:rgb(8, 8, 8);
+text-align:center;
+
+}
+
+#login{
+
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:#ff5b9f;
+display:flex;
+justify-content:center;
+align-items:center;
+z-index:9999;
+
+}
+
+.loginBox{
+
+background:white;
+padding:30px;
+border-radius:20px;
+color:#ff4b91;
+width:320px;
+
+}
+
+.loginBox input{
+
+width:100%;
+padding:12px;
+margin-top:20px;
+border:none;
+border-radius:10px;
+background:#eee;
+font-size:18px;
+
+}
+
+.loginBox button{
+
+margin-top:20px;
+padding:12px 25px;
+border:none;
+border-radius:10px;
+background:#ff4b91;
+color:white;
+font-size:18px;
+cursor:pointer;
+
+}
+
+#error{
+
+margin-top:15px;
+color:red;
+
+}
+
+.container{
+
+display:none;
+padding:40px 20px;
+
+}
+
+h1{
+
+font-size:55px;
+margin-top:20px;
+animation:fade 2s;
+
+}
+
+@keyframes fade{
+
+from{
+opacity:0;
+transform:translateY(-40px);
+}
+
+to{
+opacity:1;
+transform:translateY(0);
+}
+
+}
+
+.message{
+
+margin:30px auto;
+max-width:700px;
+font-size:23px;
+line-height:2;
+
+}
+
+.gallery{
+
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+gap:20px;
+margin-top:40px;
+
+}
+
+.gallery img{
+
+width:100%;
+height:250px;
+object-fit:cover;
+border-radius:20px;
+cursor:pointer;
+transition:.4s;
+
+}
+
+.gallery img:hover{
+
+transform:scale(1.08);
+
+}
+
+audio{
+
+margin-top:40px;
+
+}
+
+button.secret{
+
+margin-top:40px;
+padding:15px 30px;
+border:none;
+border-radius:30px;
+font-size:20px;
+background:white;
+color:#ff4b91;
+cursor:pointer;
+
+}
+
+#secretText{
+
+display:none;
+margin-top:30px;
+font-size:22px;
+line-height:2;
+
+}
+
+.balloon{
+
+position:fixed;
+bottom:-150px;
+font-size:45px;
+animation:fly linear infinite;
+
+}
+
+@keyframes fly{
+
+0%{
+transform:translateY(0);
+}
+
+100%{
+transform:translateY(-120vh);
+}
+
+}
+
+.heart{
+
+position:fixed;
+font-size:25px;
+animation:heart 1s linear forwards;
+pointer-events:none;
+
+}
+
+@keyframes heart{
+
+to{
+
+transform:translateY(-120px);
+opacity:0;
+
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<div id="login">
+
+<div class="loginBox">
+
+<h2>🔒 ادخل الباسورد</h2>
+
+<input type="password" id="pass">
+
+<button onclick="checkPass()">دخول</button>
+
+<div id="error"></div>
+
+</div>
+
+</div>
+
+<div class="container" id="main">
+
+<h1>🎂 Happy Birthday ❤️</h1>
+
+<div class="message">
+
+كل سنة وانتي طيبة ❤️
+
+أتمنى تكون السنة دي مليانة سعادة وضحك ونجاح وكل حاجة نفسك فيها.
+
+وجودك في حياتي نعمة كبيرة وأنا ممتن لكل لحظة عرفتك فيها.
+
+ربنا يديم ضحكتك الجميلة ويحققلك كل أحلامك.
+
+💖🎂✨
+
+</div>
+
+<h2>📸 ذكرياتنا</h2>
+
+<div class="gallery">
+
+<img src="images/1.jpeg">
+<img src="images/2.jpeg">
+<img src="images/3.jpeg">
+<img src="images/4.jpeg">
+<img src="images/5.jpeg">
+<img src="images/6.jpeg">
+
+</div>
+
+<audio controls>
+
+<source src="music/Kelma.mp3">  
+
+</audio>
+
+<br>
+
+<button class="secret" onclick="showSecret()">
+
+💌 افتحي الرسالة الأخيرة
+
+</button>
+
+<div id="secretText">
+
+مهما كتبت كلام...
+
+مش هعرف أوصف قد إيه انتي شخص مميز بالنسبالي.
+
+أتمنى أشوفك دايمًا سعيدة.
+
+وكل سنة وانتي أقرب لربنا وأقرب لكل أحلامك.
+
+Happy Birthday ❤️🎂
+
+</div>
+
+</div>
+
+<script>
+
+const PASSWORD="Lolly";
+
+function checkPass(){
+
+let p=document.getElementById("pass").value;
+
+if(p===PASSWORD){
+
+document.getElementById("login").style.display="none";
+
+document.getElementById("main").style.display="block";
+
+confetti();
+
+}else{
+
+document.getElementById("error").innerHTML="❌ الباسورد غلط";
+
+}
+
+}
+
+function showSecret(){
+
+document.getElementById("secretText").style.display="block";
+
+}
+
+function confetti(){
+
+for(let i=0;i<120;i++){
+
+let c=document.createElement("div");
+
+c.innerHTML="🎉";
+
+c.style.position="fixed";
+
+c.style.left=Math.random()*100+"vw";
+
+c.style.top="-20px";
+
+c.style.fontSize=(20+Math.random()*20)+"px";
+
+c.style.transition="4s linear";
+
+document.body.appendChild(c);
+
+setTimeout(()=>{
+
+c.style.top="110vh";
+
+},50);
+
+setTimeout(()=>{
+
+c.remove();
+
+},4500);
+
+}
+
+}
+
+for(let i=0;i<20;i++){
+
+let b=document.createElement("div");
+
+b.className="balloon";
+
+b.innerHTML=Math.random()>0.5?"🎈":"🎈";
+
+b.style.left=Math.random()*100+"vw";
+
+b.style.animationDuration=(6+Math.random()*6)+"s";
+
+b.style.animationDelay=(Math.random()*5)+"s";
+
+document.body.appendChild(b);
+
+}
+
+document.addEventListener("click",function(e){
+
+let h=document.createElement("div");
+
+h.className="heart";
+
+h.innerHTML="❤️";
+
+h.style.left=e.clientX+"px";
+
+h.style.top=e.clientY+"px";
+
+document.body.appendChild(h);
+
+setTimeout(()=>{
+
+h.remove();
+
+},1000);
+
+});
+
+</script>
+
+</body>
+</html>
