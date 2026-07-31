@@ -154,6 +154,19 @@ background:white;
 
 }
 
+
+.first-photo{
+height:250px;
+}
+
+@media (max-width:768px){
+.first-photo{
+height:500px !important;
+object-fit:contain !important;
+background:white;
+}
+}
+
 .gallery img:hover{
 
 transform:scale(1.08);
@@ -272,7 +285,7 @@ opacity:0;
 
 <div class="gallery">
 
-<img src="images/1.jpeg">
+<img src="images/1.jpeg" class="first-photo">
 <img src="images/2.jpeg">
 <img src="images/3.jpeg">
 <img src="images/4.jpeg">
